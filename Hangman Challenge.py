@@ -1,3 +1,5 @@
+from random import *
+
 #creating a hangman game 
 
 def showDashes(word):
@@ -88,6 +90,8 @@ def verify_correct_number(number):
             another_try = input(f"Pick a number from 1 to {len(words) }: ")
         if int(another_try) > 0 and int(another_try) <= len(words):
             showDashes(int(another_try)) 
+    elif number > 0 and number <= len(words):
+        showDashes(number)        
 
 #verifies that the entry is not a letter or a different char
 def verify_not_letter(word):
@@ -97,13 +101,17 @@ def verify_not_letter(word):
      while not another_try.isdigit():
         another_try = input(f"Pick a number from 1 to {len(words) }: ")
      verify_correct_number(int(another_try))
+    else:
+        verify_correct_number(int(word))
     
     
 
 bad_letters = []
 good_letters = []
 index_element =[]
-words = ["Shoes" , "Shirt" , "Flat" , "Coding" , "Python" , "Sleep" , "Token" , "Knocked" , "Loose"]
-picked_word = input(f"Pick a number from 1 to {len(words) }: ")   
+words = ["Shoes" , "Shirt" , "Flat" , "Coding" , "Python" , "Sleep" , "Token" , "Knocked" , "Loose" , "Music" , "Computer" , "Monitor" , "Printer" , "Water" , "Fire" , "Cold" , "Electricity"]
+shuffle(words)
+picked_word = input(f"Pick a number from 1 to {len(words) }: ")  
+ 
 #send the picked item to be verified and display an error if there is a wrong input
 verify_not_letter(picked_word)
